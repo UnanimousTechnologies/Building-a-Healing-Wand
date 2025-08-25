@@ -1,0 +1,6 @@
+local tool = script.Parent
+local healEvent = tool:WaitForChild("HealEvent") -- must be a RemoteEvent
+tool.Activated:Connect(function()
+	-- Send a heal request to the server when the player clicks
+	healEvent:FireServer()
+end)

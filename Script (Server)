@@ -1,0 +1,11 @@
+local tool = script.Parent
+local healEvent = tool:WaitForChild("HealEvent")
+healEvent.OnServerEvent:Connect(function(player)
+    local character = player.Character
+    if not character then return end
+    local humanoid = character:FindFirstChild("Humanoid")
+    if not humanoid then return end
+    -- Heal 25 but not above MaxHealth
+    humanoid.Health = math.min(humanoid.Health + 25, humanoid.MaxHealth)
+    print(player.Name .. " healed! Current Health: " .. math.floor(humanoid.Health))
+end)
